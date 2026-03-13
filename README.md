@@ -23,6 +23,7 @@ Sistem manajemen inventaris kendaraan bekas untuk perusahaan otomotif yang menju
 | Backend  | Java 17+ (Spring Boot 3)     |
 | Database | MySQL 8+                     |
 | API      | RESTful API                  |
+| Docker   | Docker & Docker Compose      |
 
 ---
 
@@ -101,6 +102,25 @@ bun run dev
 ```
 
 Frontend akan berjalan di `http://localhost:5173`
+
+### 4. Docker Setup (Recommended)
+
+Pastikan Docker dan Docker Compose sudah terinstal di komputer Anda.
+
+```bash
+# Build and run all services
+docker compose up -d --build
+```
+
+Setelah perintah di atas selesai:
+- **Frontend**: `http://localhost`
+- **Backend API**: `http://localhost:8080/api`
+- **Database**: `localhost:3307` (User: `root`, Pass: `rootpassword`)
+
+Untuk mematikan layanan:
+```bash
+docker compose down
+```
 
 ---
 

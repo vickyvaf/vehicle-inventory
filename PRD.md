@@ -22,8 +22,8 @@ Vehicle Inventory adalah perusahaan otomotif yang menjual kendaraan bekas pakai 
 
 ## 3. Pengguna Target
 
-| Peran | Deskripsi |
-|-------|-----------|
+| Peran             | Deskripsi                                             |
+|-------------------|-------------------------------------------------------|
 | **Admin / Staff** | Mengelola data inventaris kendaraan (CRUD operations) |
 
 ---
@@ -34,15 +34,15 @@ Vehicle Inventory adalah perusahaan otomotif yang menjual kendaraan bekas pakai 
 
 Halaman utama menampilkan data kendaraan dari database dalam bentuk tabel dengan kolom berikut:
 
-| Kolom | Tipe | Keterangan |
-|-------|------|------------|
-| ID Produk | Auto-increment | Primary key, di-generate otomatis |
-| Merek Produk | String | Contoh: Toyota, Daihatsu, Honda |
-| Jenis Produk | String | Contoh: SUV, Sedan, Hatchback, MPV |
-| Jumlah Stok | Integer | Jumlah unit yang tersedia |
-| Harga | Decimal/Number | Harga kendaraan dalam Rupiah |
-| Keterangan | Text | Deskripsi tambahan mengenai kendaraan |
-| Aksi | Button | Tombol Edit dan Delete |
+| Kolom        | Tipe           | Keterangan                            |
+|--------------|----------------|---------------------------------------|
+| ID Produk    | Auto-increment | Primary key, di-generate otomatis     |
+| Merek Produk | String         | Contoh: Toyota, Daihatsu, Honda       |
+| Jenis Produk | String         | Contoh: SUV, Sedan, Hatchback, MPV    |
+| Jumlah Stok  | Integer        | Jumlah unit yang tersedia             |
+| Harga        | Decimal/Number | Harga kendaraan dalam Rupiah          |
+| Keterangan   | Text           | Deskripsi tambahan mengenai kendaraan |
+| Aksi         | Button         | Tombol Edit dan Delete                |
 
 ### 4.2 Fitur Create & Search (10 poin)
 
@@ -58,13 +58,13 @@ Halaman utama menampilkan data kendaraan dari database dalam bentuk tabel dengan
 
 Form untuk menambahkan produk baru dengan field:
 
-| Field | Tipe Input | Validasi |
-|-------|-----------|----------|
-| Merek Produk | Text | Wajib diisi |
-| Jenis Produk | Text / Select | Wajib diisi |
-| Jumlah Stok | Number | Wajib diisi, minimal 0 |
-| Harga | Number | Wajib diisi, minimal 0 |
-| Keterangan | Textarea | Opsional |
+| Field        | Tipe Input    | Validasi               |
+|--------------|---------------|------------------------|
+| Merek Produk | Text          | Wajib diisi            |
+| Jenis Produk | Text / Select | Wajib diisi            |
+| Jumlah Stok  | Number        | Wajib diisi, minimal 0 |
+| Harga        | Number        | Wajib diisi, minimal 0 |
+| Keterangan   | Textarea      | Opsional               |
 
 Setelah berhasil, pengguna diarahkan kembali ke halaman utama.
 
@@ -86,15 +86,16 @@ Setelah berhasil, pengguna diarahkan kembali ke halaman utama.
 
 ### 5.1 Tech Stack
 
-| Layer | Teknologi | Keterangan |
-|-------|-----------|------------|
-| **Frontend** | React.js + TypeScript | SPA dengan Vite sebagai build tool |
-| **Routing** | TanStack Router v1 | Type-safe file-based routing untuk SPA |
-| **Data Fetching** | TanStack Query v5 | Server state management, caching, dan sinkronisasi data |
-| **UI Components** | Shadcn/ui | Komponen UI berbasis Radix UI + Tailwind CSS |
-| **Backend** | Java (Spring Boot) | REST API |
-| **Database** | MySQL | Relational database |
-| **Styling** | Tailwind CSS | Responsive design, digunakan bersama Shadcn/ui |
+| Layer             | Teknologi               | Keterangan                                              |
+|-------------------|-------------------------|---------------------------------------------------------|
+| **Frontend**      | React.js + TypeScript   | SPA dengan Vite sebagai build tool                      |
+| **Routing**       | TanStack Router v1      | Type-safe file-based routing untuk SPA                  |
+| **Data Fetching** | TanStack Query v5       | Server state management, caching, dan sinkronisasi data |
+| **UI Components** | Shadcn/ui               | Komponen UI berbasis Radix UI + Tailwind CSS            |
+| **Backend**       | Java (Spring Boot)      | REST API                                                |
+| **Database**      | MySQL                   | Relational database                                     |
+| **Styling**       | Tailwind CSS            | Responsive design, digunakan bersama Shadcn/ui          |
+| **Deployment**    | Docker & Docker Compose | Containerization untuk kemudahan deployment             |
 
 > **Catatan:** Penggunaan React.js dan Java menjadi nilai tambah sesuai requirement.
 
@@ -120,11 +121,11 @@ CREATE TABLE products (
 - Digunakan untuk navigasi antar halaman secara type-safe.
 - Struktur route:
 
-| Route | Komponen | Keterangan |
-|-------|----------|------------|
-| `/` | `ProductsIndexRoute` | Halaman utama — tabel inventaris |
-| `/products/create` | `ProductsCreateRoute` | Halaman tambah produk baru |
-| `/products/$id/edit` | `ProductsEditRoute` | Halaman edit produk berdasarkan ID |
+| Route                | Komponen              | Keterangan                         |
+|----------------------|-----------------------|------------------------------------|
+| `/`                  | `ProductsIndexRoute`  | Halaman utama — tabel inventaris   |
+| `/products/create`   | `ProductsCreateRoute` | Halaman tambah produk baru         |
+| `/products/$id/edit` | `ProductsEditRoute`   | Halaman edit produk berdasarkan ID |
 
 - Navigasi setelah sukses Create/Edit/Delete menggunakan `router.navigate()`.
 - Parameter ID pada halaman Edit diambil via `useParams()` dari TanStack Router.
@@ -134,11 +135,11 @@ CREATE TABLE products (
 - Digunakan untuk fetching, caching, dan sinkronisasi data dari REST API.
 - Query keys yang digunakan:
 
-| Query Key | Fungsi |
-|-----------|--------|
-| `['products']` | Fetch semua produk (list) |
-| `['products', brand]` | Fetch produk dengan filter merek |
-| `['products', id]` | Fetch detail satu produk (untuk edit) |
+| Query Key             | Fungsi                                |
+|-----------------------|---------------------------------------|
+| `['products']`        | Fetch semua produk (list)             |
+| `['products', brand]` | Fetch produk dengan filter merek      |
+| `['products', id]`    | Fetch detail satu produk (untuk edit) |
 
 - Mutasi (Create, Update, Delete) menggunakan `useMutation()` dengan `onSuccess` yang memanggil `queryClient.invalidateQueries(['products'])` untuk refresh otomatis.
 - Loading state diperoleh dari properti `isLoading` / `isPending`.
@@ -148,31 +149,31 @@ CREATE TABLE products (
 
 - Komponen UI yang digunakan:
 
-| Komponen | Penggunaan |
-|----------|------------|
-| `Table` | Tabel inventaris produk |
-| `Button` | Tombol Create, Edit, Hapus, Simpan, Batal |
-| `Input` | Field pencarian dan form input |
-| `Select` | Dropdown Jenis Produk |
-| `Textarea` | Field Keterangan |
-| `Dialog` | Modal konfirmasi Delete |
-| `Form` (+ React Hook Form) | Wrapper form dengan validasi |
-| `Badge` | Label status / ID produk pada Edit page |
-| `Skeleton` | Loading placeholder saat fetch data |
-| `Toast` / `Sonner` | Notifikasi sukses/gagal operasi CRUD |
+| Komponen                   | Penggunaan                                |
+|----------------------------|-------------------------------------------|
+| `Table`                    | Tabel inventaris produk                   |
+| `Button`                   | Tombol Create, Edit, Hapus, Simpan, Batal |
+| `Input`                    | Field pencarian dan form input            |
+| `Select`                   | Dropdown Jenis Produk                     |
+| `Textarea`                 | Field Keterangan                          |
+| `Dialog`                   | Modal konfirmasi Delete                   |
+| `Form` (+ React Hook Form) | Wrapper form dengan validasi              |
+| `Badge`                    | Label status / ID produk pada Edit page   |
+| `Skeleton`                 | Loading placeholder saat fetch data       |
+| `Toast` / `Sonner`         | Notifikasi sukses/gagal operasi CRUD      |
 
 ---
 
 ### 5.4 API Endpoints
 
-| Method | Endpoint | Deskripsi |
-|--------|----------|-----------|
-| `GET` | `/api/products` | Mengambil semua produk |
-| `GET` | `/api/products?brand={keyword}` | Pencarian berdasarkan merek |
-| `GET` | `/api/products/{id}` | Mengambil detail produk |
-| `POST` | `/api/products` | Menambah produk baru |
-| `PUT` | `/api/products/{id}` | Mengupdate produk |
-| `DELETE` | `/api/products/{id}` | Menghapus produk |
+| Method   | Endpoint                        | Deskripsi                   |
+|----------|---------------------------------|-----------------------------|
+| `GET`    | `/api/products`                 | Mengambil semua produk      |
+| `GET`    | `/api/products?brand={keyword}` | Pencarian berdasarkan merek |
+| `GET`    | `/api/products/{id}`            | Mengambil detail produk     |
+| `POST`   | `/api/products`                 | Menambah produk baru        |
+| `PUT`    | `/api/products/{id}`            | Mengupdate produk           |
+| `DELETE` | `/api/products/{id}`            | Menghapus produk            |
 
 ### 5.5 Request / Response Format
 
@@ -223,25 +224,24 @@ flowchart TD
 
 ---
 
-## 7. Kriteria Penerimaan
-
-| # | Kriteria | Poin |
-|---|----------|------|
-| 1 | Tabel menampilkan semua kolom yang diminta | 10 |
-| 2 | Terdapat tombol Create dan input Search | 10 |
-| 3 | Search berdasarkan merek produk berfungsi | 10 |
-| 4 | Form Create dengan semua field berfungsi | 20 |
-| 5 | Form Edit dengan prefilled data berfungsi | 20 |
-| 6 | Semua CRUD tersinkronisasi dengan database | 30 |
-| **Total** | | **100** |
-
-**Bonus:** Penggunaan React.js (Frontend) dan Java/Spring Boot (Backend)
-
----
-
 ## 8. Non-Functional Requirements
 
 - **Responsif:** UI harus responsif di desktop dan mobile.
 - **Validasi:** Form input harus tervalidasi sebelum submit.
 - **Error handling:** Menampilkan pesan error yang jelas jika terjadi kegagalan.
 - **Loading state:** Menampilkan indikator loading saat fetch data.
+
+---
+
+## 9. Docker & Containerization
+
+Sistem dapat dijalankan menggunakan Docker untuk mempermudah setup lingkungan pengembangan dan produksi.
+
+### 9.1 Komponen Docker
+- **Frontend Container:** Menjalankan React SPA menggunakan Nginx sebagai web server.
+- **Backend Container:** Menjalankan Spring Boot executable JAR.
+- **Database Container:** Menjalankan MySQL database server.
+
+### 9.2 Orchestration
+- Menggunakan **Docker Compose** untuk menghubungkan ketiga komponen di atas.
+- Konfigurasi environment variables dilakukan melalui `docker-compose.yml`.
